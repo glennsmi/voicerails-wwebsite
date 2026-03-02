@@ -26,7 +26,7 @@ export default function GettingStartedPage() {
 
       <div className="container">
         <section className="section" style={{ paddingTop: 0 }}>
-          <div className="steps-grid" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
+          <div className="steps-grid steps-grid-4">
             <div className="step-card">
               <h3>Create App</h3>
               <p>Create an app and environment in the control plane.</p>

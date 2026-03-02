@@ -80,7 +80,7 @@ export default function HomePage() {
             production voice products without stitching six systems together.
           </p>
 
-          <div className="modules-grid" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
+          <div className="modules-grid modules-grid-3">
             <div className="module-card">
               <div className="module-icon"><FaMicrophone /></div>
               <h3>Voice Model Orchestration</h3>
@@ -303,81 +303,6 @@ export default function HomePage() {
               <h4>Internal Tools</h4>
               <p>Voice-driven data entry, field reporting, compliance checks.</p>
             </div>
-          </div>
-        </section>
-      </div>
-
-      <div className="container"><hr className="section-divider" /></div>
-
-      {/* PRICING PREVIEW */}
-      <div className="container">
-        <section className="section">
-          <div className="section-label">Pricing</div>
-          <h2 className="section-title">Transparent. Predictable.</h2>
-          <p className="section-desc">
-            Platform fee + usage + provider pass-through at cost + 20%. No surprises, no hidden margins.
-          </p>
-
-          <div className="pricing-grid">
-            <div className="price-card">
-              <div className="price-tier">Starter</div>
-              <div className="price-amount"><span className="currency">$</span>9<span className="period">.99/mo</span></div>
-              <div className="price-desc">Prototype and test with a single provider.</div>
-              <ul className="price-features">
-                <li>60 real-time minutes</li>
-                <li>Single voice provider</li>
-                <li>Basic dashboard</li>
-                <li>Docs-only support</li>
-              </ul>
-              <Link href="/pricing" className="price-btn price-btn-outline">Start Free →</Link>
-            </div>
-
-            <div className="price-card featured">
-              <div className="price-tier">Build</div>
-              <div className="price-amount"><span className="currency">$</span>99<span className="period">/mo</span></div>
-              <div className="price-desc">Multi-provider orchestration with telephony.</div>
-              <ul className="price-features">
-                <li>500 real-time minutes</li>
-                <li>Multi-provider support</li>
-                <li>Telephony bridge</li>
-                <li>Full logs + dashboard</li>
-                <li>Community support</li>
-              </ul>
-              <Link href="/pricing" className="price-btn price-btn-filled">Get Started →</Link>
-            </div>
-
-            <div className="price-card">
-              <div className="price-tier">Launch</div>
-              <div className="price-amount"><span className="currency">$</span>499<span className="period">/mo</span></div>
-              <div className="price-desc">Workflows, analytics, and SLA-backed support.</div>
-              <ul className="price-features">
-                <li>3,000 real-time minutes</li>
-                <li>Workflow engine</li>
-                <li>Alerts, retries, analytics</li>
-                <li>SLA-backed support</li>
-              </ul>
-              <Link href="/pricing" className="price-btn price-btn-outline">Contact Us →</Link>
-            </div>
-
-            <div className="price-card">
-              <div className="price-tier">Scale</div>
-              <div className="price-amount">Custom</div>
-              <div className="price-desc">Enterprise controls, dedicated throughput, SSO.</div>
-              <ul className="price-features">
-                <li>Custom minutes</li>
-                <li>Multi-environment deploys</li>
-                <li>Dedicated throughput</li>
-                <li>SSO + audit exports</li>
-                <li>Dedicated support</li>
-              </ul>
-              <Link href="/pricing" className="price-btn price-btn-outline">Talk to Sales →</Link>
-            </div>
-          </div>
-
-          <div className="pricing-note">
-            <strong>Transparent pass-through pricing:</strong> Voice model and telephony
-            provider costs are passed through at cost + 20% markup. You always see exactly
-            what you&apos;re paying for.
           </div>
         </section>
       </div>

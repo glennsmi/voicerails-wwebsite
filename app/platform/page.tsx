@@ -28,7 +28,7 @@ export default function PlatformPage() {
             can focus on the voice experience, not the plumbing.
           </p>
 
-          <div className="modules-grid" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
+          <div className="modules-grid modules-grid-3">
             <div className="module-card">
               <div className="module-icon"><FaMicrophone /></div>
               <h3>Voice Model Orchestration</h3>

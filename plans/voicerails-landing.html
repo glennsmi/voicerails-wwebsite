@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VoiceRails.ai — Rails for Voice AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #07080A;
+  --bg-elevated: #0D0F12;
+  --bg-card: #111318;
+  --bg-card-hover: #161921;
+  --border: #1E2028;
+  --border-bright: #2A2D38;
+  --text-primary: #E8E9ED;
+  --text-secondary: #8B8D98;
+  --text-muted: #5C5E6A;
+  --accent: #22D3A7;
+  --accent-dim: #1AAF8B;
+  --accent-glow: rgba(34, 211, 167, 0.12);
+  --accent-glow-strong: rgba(34, 211, 167, 0.25);
+  --orange: #F59E0B;
+  --blue: #3B82F6;
+  --pink: #EC4899;
+  --font-body: 'DM Sans', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: 'Instrument Serif', Georgia, serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--accent-glow-strong); color: var(--accent); }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 0 40px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(7, 8, 10, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+.nav-logo span { color: var(--accent); }
+
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text-primary); }
+
+.nav-cta {
+  padding: 8px 18px !important;
+  background: var(--accent) !important;
+  color: var(--bg) !important;
+  border-radius: 6px;
+  font-weight: 600 !important;
+  transition: opacity 0.2s !important;
+}
+.nav-cta:hover { opacity: 0.88; color: var(--bg) !important; }
+
+/* ─── HERO ─── */
+.hero {
+  padding: 160px 40px 100px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border: 1px solid var(--border-bright);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  background: var(--bg-elevated);
+}
+.hero-badge .dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 var(--accent-glow-strong); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 6px transparent; }
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 7vw, 88px);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+  margin-bottom: 28px;
+  max-width: 900px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-sub {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 580px;
+  margin-bottom: 44px;
+}
+
+.hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid var(--border-bright);
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-secondary:hover { border-color: var(--text-muted); background: var(--bg-elevated); }
+
+/* ─── CODE BLOCK HERO ─── */
+.hero-code {
+  margin-top: 64px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.code-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-card);
+}
+.code-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--border-bright);
+}
+.code-dot:nth-child(1) { background: #FF5F57; }
+.code-dot:nth-child(2) { background: #FEBC2E; }
+.code-dot:nth-child(3) { background: #28C840; }
+.code-title {
+  margin-left: 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.code-body {
+  padding: 24px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.8;
+  overflow-x: auto;
+}
+
+.code-body .comment { color: var(--text-muted); }
+.code-body .keyword { color: var(--pink); }
+.code-body .string { color: var(--accent); }
+.code-body .func { color: var(--blue); }
+.code-body .number { color: var(--orange); }
+.code-body .prop { color: var(--text-primary); }
+
+/* ─── METRICS BAR ─── */
+.metrics-bar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.metrics-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.metric-item {
+  padding: 32px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+}
+.metric-item:last-child { border-right: none; }
+
+.metric-value {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: -0.03em;
+}
+
+.metric-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* ─── SECTIONS ─── */
+section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 40px;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+  max-width: 700px;
+}
+
+.section-desc {
+  font-size: 17px;
+  color: var(--text-secondary);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 56px;
+}
+
+/* ─── MODULES GRID ─── */
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.module-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 36px;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.module-card:hover {
+  border-color: var(--border-bright);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+}
+
+.module-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+  background: var(--accent-glow);
+  border: 1px solid rgba(34, 211, 167, 0.15);
+}
+
+.module-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.module-card p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.module-features {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.module-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 4px 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-muted);
+}
+
+/* ─── HOW IT WORKS ─── */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  counter-reset: step;
+}
+
+.step {
+  padding: 36px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-card);
+  counter-increment: step;
+  position: relative;
+}
+
+.step::before {
+  content: "0" counter(step);
+  font-family: var(--font-mono);
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--border-bright);
+  line-height: 1;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.step h3 {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.step p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.step code {
+  display: block;
+  margin-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent);
+  background: var(--bg);
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+/* ─── PROVIDERS ─── */
+.providers-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.provider-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+  transition: all 0.2s;
+}
+.provider-chip:hover {
+  border-color: var(--border-bright);
+  background: var(--bg-card-hover);
+}
+
+.provider-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+}
+
+.provider-chip span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.provider-chip .status {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-left: 8px;
+}
+
+/* ─── PRICING ─── */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.price-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 36px 28px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s;
+}
+.price-card:hover {
+  border-color: var(--border-bright);
+  transform: translateY(-2px);
+}
+.price-card.featured {
+  border-color: var(--accent);
+  background: linear-gradient(180deg, rgba(34,211,167,0.04) 0%, var(--bg-card) 100%);
+  position: relative;
+}
+
+.price-card.featured::before {
+  content: 'Most Popular';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--bg);
+  background: var(--accent);
+  padding: 4px 14px;
+  border-radius: 100px;
+}
+
+.price-tier {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.price-amount {
+  font-family: var(--font-mono);
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  margin-bottom: 4px;
+}
+.price-amount .currency { font-size: 22px; color: var(--text-muted); vertical-align: top; line-height: 1.6; }
+.price-amount .period { font-size: 14px; color: var(--text-muted); font-weight: 400; }
+
+.price-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.price-features {
+  list-style: none;
+  flex: 1;
+  margin-bottom: 28px;
+}
+.price-features li {
+  font-size: 13px;
+  color: var(--text-secondary);
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.price-features li::before {
+  content: '✓';
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.price-btn {
+  display: block;
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+.price-btn-outline {
+  border: 1px solid var(--border-bright);
+  color: var(--text-primary);
+  background: transparent;
+}
+.price-btn-outline:hover { background: var(--bg-elevated); border-color: var(--text-muted); }
+.price-btn-filled {
+  border: none;
+  background: var(--accent);
+  color: var(--bg);
+}
+.price-btn-filled:hover { opacity: 0.88; }
+
+.pricing-note {
+  margin-top: 32px;
+  padding: 20px 24px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-elevated);
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.pricing-note strong { color: var(--text-primary); }
+
+/* ─── VERTICALS ─── */
+.verticals-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.vertical-item {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+  transition: all 0.2s;
+}
+.vertical-item:hover {
+  border-color: var(--border-bright);
+  background: var(--bg-card-hover);
+}
+
+.vertical-item h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.vertical-item p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ─── CTA ─── */
+.final-cta {
+  text-align: center;
+  padding: 120px 40px;
+  position: relative;
+}
+
+.final-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.final-cta h2 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.final-cta p {
+  font-size: 17px;
+  color: var(--text-secondary);
+  margin-bottom: 36px;
+  position: relative;
+}
+
+.final-cta .hero-actions { justify-content: center; position: relative; }
+
+/* ─── FOOTER ─── */
+footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 40px 60px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer .footer-left {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+footer .footer-links {
+  display: flex;
+  gap: 24px;
+}
+footer .footer-links a {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+footer .footer-links a:hover { color: var(--text-secondary); }
+
+/* ─── DIVIDER ─── */
+.section-divider {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.section-divider hr {
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .modules-grid, .pricing-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
+  .metrics-inner { grid-template-columns: repeat(2, 1fr); }
+  .metric-item:nth-child(2) { border-right: none; }
+  .verticals-grid { grid-template-columns: 1fr; }
+  nav { padding: 0 20px; }
+  .hero, section, .metrics-bar, .final-cta { padding-left: 20px; padding-right: 20px; }
+  .nav-links a:not(.nav-cta) { display: none; }
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-badge { animation: fadeUp 0.6s ease both; }
+.hero h1 { animation: fadeUp 0.6s ease 0.1s both; }
+.hero-sub { animation: fadeUp 0.6s ease 0.2s both; }
+.hero-actions { animation: fadeUp 0.6s ease 0.3s both; }
+.hero-code { animation: fadeUp 0.6s ease 0.45s both; }
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">voice<span>rails</span>.ai</a>
+  <div class="nav-links">
+    <a href="#modules">Platform</a>
+    <a href="#how">How It Works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#" class="nav-cta">Get Started →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">
+    <span class="dot"></span>
+    Now in Early Access
+  </div>
+  <h1>Production voice agents.<br><em>In minutes.</em></h1>
+  <p class="hero-sub">One API layer for real-time voice models, telephony, conversation workflows, and structured memory. Stop building infrastructure. Start shipping voice.</p>
+  <div class="hero-actions">
+    <a href="#" class="btn-primary">Start Building Free →</a>
+    <a href="#" class="btn-secondary">Read the Docs</a>
+  </div>
+
+  <div class="hero-code">
+    <div class="code-header">
+      <span class="code-dot"></span>
+      <span class="code-dot"></span>
+      <span class="code-dot"></span>
+      <span class="code-title">terminal</span>
+    </div>
+    <div class="code-body">
+      <span class="comment"># Install and initialise</span><br>
+      <span class="keyword">$</span> <span class="func">npm</span> <span class="prop">install -g @voicerails/cli</span><br>
+      <span class="keyword">$</span> <span class="func">voicerails</span> <span class="prop">init</span> <span class="string">--provider openai --telephony twilio</span><br><br>
+      <span class="comment"># Deploy your voice agent</span><br>
+      <span class="keyword">$</span> <span class="func">voicerails</span> <span class="prop">deploy</span><br>
+      <span class="string">✓</span> <span class="prop">Voice session API</span>  <span class="string">live</span><br>
+      <span class="string">✓</span> <span class="prop">Telephony bridge</span>  <span class="string">live</span><br>
+      <span class="string">✓</span> <span class="prop">Workflow engine</span>   <span class="string">live</span><br>
+      <span class="string">✓</span> <span class="prop">Memory pipeline</span>  <span class="string">live</span><br><br>
+      <span class="comment"># Verify everything works</span><br>
+      <span class="keyword">$</span> <span class="func">voicerails</span> <span class="prop">verify</span><br>
+      <span class="string">All systems healthy.</span> <span class="prop">First call ready in</span> <span class="number">4m 23s</span>
+    </div>
+  </div>
+</div>
+
+<!-- METRICS BAR -->
+<div class="metrics-bar">
+  <div class="metrics-inner">
+    <div class="metric-item">
+      <div class="metric-value">&lt;30min</div>
+      <div class="metric-label">Zero to first live call</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-value">4</div>
+      <div class="metric-label">Voice providers supported</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-value">99.5%</div>
+      <div class="metric-label">Session start success rate</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-value">&lt;200ms</div>
+      <div class="metric-label">Platform overhead per turn</div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULES -->
+<section id="modules">
+  <div class="section-label">Platform</div>
+  <h2 class="section-title">Four modules. One unified API.</h2>
+  <p class="section-desc">Everything you need to build, deploy, and operate production voice agents — without months of infrastructure work.</p>
+
+  <div class="modules-grid">
+    <div class="module-card">
+      <div class="module-icon">🎙</div>
+      <h3>Voice Model Orchestration</h3>
+      <p>Unified session API across multiple real-time voice providers. Hot-swap models without code changes. Native tool-calling with a single schema.</p>
+      <div class="module-features">
+        <span class="module-tag">provider fallback</span>
+        <span class="module-tag">tool calling</span>
+        <span class="module-tag">hot swap</span>
+        <span class="module-tag">audio normalisation</span>
+      </div>
+    </div>
+
+    <div class="module-card">
+      <div class="module-icon">📞</div>
+      <h3>Telephony Infrastructure</h3>
+      <p>Production-grade phone calls with in-platform number provisioning. Inbound routing, outbound initiation, and real-time audio bridging to any voice provider.</p>
+      <div class="module-features">
+        <span class="module-tag">number provisioning</span>
+        <span class="module-tag">inbound / outbound</span>
+        <span class="module-tag">DTMF</span>
+        <span class="module-tag">call transfer</span>
+      </div>
+    </div>
+
+    <div class="module-card">
+      <div class="module-icon">⚡</div>
+      <h3>Conversation Workflows</h3>
+      <p>Define conversation logic as JSON workflows. Custom stages, tool execution, prompt orchestration, and transition logic — all versioned and A/B testable.</p>
+      <div class="module-features">
+        <span class="module-tag">JSON workflow DSL</span>
+        <span class="module-tag">versioning</span>
+        <span class="module-tag">custom hooks</span>
+        <span class="module-tag">A/B deploy</span>
+      </div>
+    </div>
+
+    <div class="module-card">
+      <div class="module-icon">🧠</div>
+      <h3>Memory &amp; Analysis Engine</h3>
+      <p>Structured extraction from every conversation. Durable memory graph with per-user, per-session, and cross-session state. Webhooks for all post-call artifacts.</p>
+      <div class="module-features">
+        <span class="module-tag">extraction schemas</span>
+        <span class="module-tag">memory graph</span>
+        <span class="module-tag">webhooks</span>
+        <span class="module-tag">CRM integration</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><hr></div>
+
+<!-- PROVIDERS -->
+<section>
+  <div class="section-label">Providers</div>
+  <h2 class="section-title">Swap providers. Keep your code.</h2>
+  <p class="section-desc">Clean provider encapsulation means you can switch voice models with a config change — no rewrite, no downtime, no scramble when providers ship breaking changes.</p>
+
+  <div class="providers-row">
+    <div class="provider-chip">
+      <span class="provider-dot" style="background: var(--accent);"></span>
+      <span>OpenAI Realtime</span>
+      <span class="status">GA</span>
+    </div>
+    <div class="provider-chip">
+      <span class="provider-dot" style="background: var(--blue);"></span>
+      <span>Gemini Live</span>
+      <span class="status">GA</span>
+    </div>
+    <div class="provider-chip">
+      <span class="provider-dot" style="background: var(--pink);"></span>
+      <span>ElevenLabs</span>
+      <span class="status">GA</span>
+    </div>
+    <div class="provider-chip">
+      <span class="provider-dot" style="background: var(--orange);"></span>
+      <span>Grok Voice</span>
+      <span class="status">GA</span>
+    </div>
+    <div class="provider-chip">
+      <span class="provider-dot" style="background: var(--text-muted);"></span>
+      <span>Twilio</span>
+      <span class="status">Telephony</span>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><hr></div>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-label">How It Works</div>
+  <h2 class="section-title">Three commands to production.</h2>
+  <p class="section-desc">From empty project to live voice agent — in-app or over the phone.</p>
+
+  <div class="steps">
+    <div class="step">
+      <h3>Initialise</h3>
+      <p>Pick your voice provider, configure telephony, and set your region. The CLI scaffolds everything.</p>
+      <code>$ voicerails init</code>
+    </div>
+    <div class="step">
+      <h3>Deploy</h3>
+      <p>One command provisions your runtime, telephony bridge, workflow engine, and memory pipeline.</p>
+      <code>$ voicerails deploy</code>
+    </div>
+    <div class="step">
+      <h3>Ship</h3>
+      <p>Define conversation workflows, attach your tools, and go live. Monitor everything from the dashboard.</p>
+      <code>$ voicerails verify<br>✓ All systems healthy</code>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><hr></div>
+
+<!-- USE CASES -->
+<section>
+  <div class="section-label">Use Cases</div>
+  <h2 class="section-title">Built for builders.</h2>
+  <p class="section-desc">Teams across every vertical are shipping voice-first products on VoiceRails.</p>
+
+  <div class="verticals-grid">
+    <div class="vertical-item">
+      <h4>Health & Wellness</h4>
+      <p>AI coaches, therapy support, nutrition guidance, patient intake.</p>
+    </div>
+    <div class="vertical-item">
+      <h4>Recruiting</h4>
+      <p>Screening calls, structured interviews, candidate assessment at scale.</p>
+    </div>
+    <div class="vertical-item">
+      <h4>Sales Enablement</h4>
+      <p>AI SDRs, call scoring, real-time coaching nudges, QA automation.</p>
+    </div>
+    <div class="vertical-item">
+      <h4>Learning & Tutoring</h4>
+      <p>Language practice, exam prep, interactive voice-first courses.</p>
+    </div>
+    <div class="vertical-item">
+      <h4>Support Triage</h4>
+      <p>First-line voice agents, appointment scheduling, intake flows.</p>
+    </div>
+    <div class="vertical-item">
+      <h4>Internal Tools</h4>
+      <p>Voice-driven data entry, field reporting, compliance checks.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><hr></div>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-label">Pricing</div>
+  <h2 class="section-title">Transparent. Predictable.</h2>
+  <p class="section-desc">Platform fee + usage + provider pass-through at cost + 20%. No surprises, no hidden margins.</p>
+
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-tier">Starter</div>
+      <div class="price-amount"><span class="currency">$</span>9<span class="period">.99/mo</span></div>
+      <div class="price-desc">Prototype and test with a single provider.</div>
+      <ul class="price-features">
+        <li>60 real-time minutes</li>
+        <li>Single voice provider</li>
+        <li>Basic dashboard</li>
+        <li>Docs-only support</li>
+      </ul>
+      <a href="#" class="price-btn price-btn-outline">Start Free →</a>
+    </div>
+
+    <div class="price-card featured">
+      <div class="price-tier">Build</div>
+      <div class="price-amount"><span class="currency">$</span>99<span class="period">/mo</span></div>
+      <div class="price-desc">Multi-provider orchestration with telephony.</div>
+      <ul class="price-features">
+        <li>500 real-time minutes</li>
+        <li>Multi-provider support</li>
+        <li>Telephony bridge</li>
+        <li>Full logs + dashboard</li>
+        <li>Community support</li>
+      </ul>
+      <a href="#" class="price-btn price-btn-filled">Get Started →</a>
+    </div>
+
+    <div class="price-card">
+      <div class="price-tier">Launch</div>
+      <div class="price-amount"><span class="currency">$</span>499<span class="period">/mo</span></div>
+      <div class="price-desc">Workflows, memory engine, and SLA-backed support.</div>
+      <ul class="price-features">
+        <li>3,000 real-time minutes</li>
+        <li>Workflow engine</li>
+        <li>Structured memory</li>
+        <li>Alerts, retries, analytics</li>
+        <li>SLA-backed support</li>
+      </ul>
+      <a href="#" class="price-btn price-btn-outline">Contact Us →</a>
+    </div>
+
+    <div class="price-card">
+      <div class="price-tier">Scale</div>
+      <div class="price-amount">Custom</div>
+      <div class="price-desc">Enterprise controls, dedicated throughput, SSO.</div>
+      <ul class="price-features">
+        <li>Custom minutes</li>
+        <li>Multi-environment deploys</li>
+        <li>Dedicated throughput</li>
+        <li>SSO + audit exports</li>
+        <li>Dedicated support</li>
+      </ul>
+      <a href="#" class="price-btn price-btn-outline">Talk to Sales →</a>
+    </div>
+  </div>
+
+  <div class="pricing-note">
+    <strong>Transparent pass-through pricing:</strong> Voice model and telephony provider costs are passed through at cost + 20% markup. You always see exactly what you're paying for — provider costs, platform fees, and usage — with no hidden margins.
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <h2>Stop building plumbing.<br>Start shipping voice.</h2>
+  <p>Go from zero to a live production voice agent in under 30 minutes.</p>
+  <div class="hero-actions">
+    <a href="#" class="btn-primary">Start Building Free →</a>
+    <a href="#" class="btn-secondary">Read the Docs</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">© 2026 VoiceRails · Fueld AI Ltd</div>
+  <div class="footer-links">
+    <a href="#">Documentation</a>
+    <a href="#">API Reference</a>
+    <a href="#">Status</a>
+    <a href="#">GitHub</a>
+    <a href="#">Twitter</a>
+  </div>
+</footer>
+
+</body>
+</html>

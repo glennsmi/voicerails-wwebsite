@@ -1,0 +1,8 @@
+.next
+out
+node_modules
+functions/node_modules
+functions/lib
+.DS_Store
+.env*
+!.env.example

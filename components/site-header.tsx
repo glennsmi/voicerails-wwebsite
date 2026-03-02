@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 
 const navItems = [
   { href: "/platform", label: "Platform" },
+  { href: "/why-voicerails", label: "Why VoiceRails" },
   { href: "/developers", label: "Developers" },
   { href: "/pricing", label: "Pricing" },
   { href: "/docs", label: "Docs" }

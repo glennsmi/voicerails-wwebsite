@@ -11,7 +11,8 @@ export default function PricingPage() {
           </h1>
           <p className="page-subtitle">
             Platform fee + usage + provider pass-through at cost + 20%.
-            No surprises, no hidden margins.
+            No surprises, no hidden margins, and a clear path from prototype to
+            production infrastructure.
           </p>
         </div>
       </div>
@@ -102,16 +103,16 @@ export default function PricingPage() {
 
           <div className="grid-3">
             <div className="card">
-              <h3>Voice Model Orchestration</h3>
-              <p>Unified session API, provider fallback, hot-swap, and native tool-calling across all plans.</p>
+              <h3>Voice Runtime Foundation</h3>
+              <p>Unified session API, provider fallback, hot-swap, and core workflow execution.</p>
             </div>
             <div className="card">
-              <h3>Developer Tooling</h3>
-              <p>CLI, API reference, webhook integration, and deployment controls from day one.</p>
+              <h3>Developer + Builder Tooling</h3>
+              <p>SDKs, CLI, API docs, and visual workflow tools as your team expands.</p>
             </div>
             <div className="card">
-              <h3>Dashboard &amp; Logs</h3>
-              <p>Real-time session monitoring, call logs, and usage analytics in every tier.</p>
+              <h3>Observability + Usage Visibility</h3>
+              <p>Session monitoring, call logs, usage tracking, and clearer operational visibility.</p>
             </div>
           </div>
         </section>

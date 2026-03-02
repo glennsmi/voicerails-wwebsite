@@ -17,7 +17,7 @@ export default function SiteFooter() {
             voice<span>rails</span>.ai
           </p>
           <p className="footer-tagline">
-            The infrastructure layer for production voice AI. Built for developers who ship.
+            The infrastructure layer for production voice AI. Built for developers and builders who ship.
           </p>
         </div>
 
@@ -25,6 +25,7 @@ export default function SiteFooter() {
           <p className="footer-heading">Product</p>
           <ul className="footer-list">
             <li><Link href="/platform">Platform</Link></li>
+            <li><Link href="/why-voicerails">Why VoiceRails</Link></li>
             <li><Link href="/workflow-builder">Workflow Builder</Link></li>
             <li><Link href="/pricing">Pricing</Link></li>
           </ul>

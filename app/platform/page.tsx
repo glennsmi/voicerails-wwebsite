@@ -12,8 +12,8 @@ export default function PlatformPage() {
           </h1>
           <p className="page-subtitle">
             VoiceRails combines the hard layers teams usually stitch together manually:
-            model orchestration, telephony, and conversation workflows — unified behind
-            one API surface.
+            orchestration, telephony, workflow runtime, visual design, extraction,
+            and memory — unified behind one platform surface.
           </p>
         </div>
       </div>
@@ -22,7 +22,7 @@ export default function PlatformPage() {
       <div className="container">
         <section className="section" style={{ paddingTop: 0 }}>
           <div className="section-label">Core Modules</div>
-          <h2 className="section-title">Three modules. One API.</h2>
+          <h2 className="section-title">Six modules. One production platform.</h2>
           <p className="section-desc">
             Each module handles a distinct infrastructure concern so your team
             can focus on the voice experience, not the plumbing.
@@ -73,6 +73,30 @@ export default function PlatformPage() {
                 <span className="module-tag">custom hooks</span>
                 <span className="module-tag">A/B deploy</span>
               </div>
+            </div>
+          </div>
+
+          <div className="grid-3" style={{ marginTop: 16 }}>
+            <div className="card">
+              <h3>Visual Flow Designer</h3>
+              <p>
+                Non-technical builders can design voice logic visually, while
+                engineers keep deterministic JSON definitions under version control.
+              </p>
+            </div>
+            <div className="card">
+              <h3>Intelligent Extraction Engine</h3>
+              <p>
+                Define structured outcomes to gather from natural conversation and
+                return usable data instead of raw transcript dumps.
+              </p>
+            </div>
+            <div className="card">
+              <h3>Memory + Analysis Engine</h3>
+              <p>
+                Persist session context, run post-call analysis, and power continuity
+                across conversations with durable memory primitives.
+              </p>
             </div>
           </div>
         </section>
@@ -134,6 +158,49 @@ export default function PlatformPage() {
 
       <div className="container"><hr className="section-divider" /></div>
 
+      {/* ORIGIN STORY */}
+      <div className="container">
+        <section className="section">
+          <div className="section-label">Origin Story</div>
+          <h2 className="section-title">Built from hard-earned implementation lessons.</h2>
+          <p className="section-desc">
+            We built VoiceRails after seeing how quickly voice complexity explodes
+            in production. The platform is our way of making those lessons reusable
+            for every team that ships voice.
+          </p>
+
+          <div className="grid-3">
+            <div className="card">
+              <h3>Provider drift is real</h3>
+              <p>
+                API behavior changes. Event formats move. Session semantics vary.
+                We normalize this so your app code stays stable.
+              </p>
+            </div>
+            <div className="card">
+              <h3>Conversation quality is operational</h3>
+              <p>
+                Turn-taking, interruptions, and handoffs are infrastructure concerns,
+                not just prompt concerns.
+              </p>
+            </div>
+            <div className="card">
+              <h3>Telephony changes everything</h3>
+              <p>
+                App voice and phone voice fail differently. The platform treats both
+                channels as first-class from the start.
+              </p>
+            </div>
+          </div>
+
+          <div style={{ marginTop: 24 }}>
+            <Link href="/why-voicerails" className="btn-secondary">Read Why We Built This</Link>
+          </div>
+        </section>
+      </div>
+
+      <div className="container"><hr className="section-divider" /></div>
+
       {/* PROVIDERS */}
       <div className="container">
         <section className="section">
@@ -162,7 +229,7 @@ export default function PlatformPage() {
             <div className="provider-chip">
               <span className="provider-dot" style={{ background: "var(--orange)" }} />
               <span>Grok Voice</span>
-              <span className="status">GA</span>
+              <span className="status">Preview</span>
             </div>
             <div className="provider-chip">
               <span className="provider-dot" style={{ background: "var(--text-muted)" }} />
@@ -177,9 +244,9 @@ export default function PlatformPage() {
       <div className="container">
         <div className="final-cta">
           <h2>Ready to build?</h2>
-          <p>Try the visual workflow builder or dive into the developer docs.</p>
+          <p>Explore the founder story, then dive into docs or the visual builder.</p>
           <div className="hero-actions">
-            <Link href="/workflow-builder" className="btn-primary">Open Workflow Builder →</Link>
+            <Link href="/why-voicerails" className="btn-primary">Why VoiceRails →</Link>
             <Link href="/developers" className="btn-secondary">Developer Hub</Link>
           </div>
         </div>

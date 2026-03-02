@@ -25,7 +25,7 @@ const mono = JetBrains_Mono({
 
 const siteTitle = "VoiceRails.ai — Rails for Voice AI";
 const siteDescription =
-  "One API layer for real-time voice models, telephony, and conversation workflows. Stop building infrastructure. Start shipping voice.";
+  "One platform for real-time orchestration, telephony, workflows, visual flow design, extraction, and memory. Built for teams shipping production voice.";
 
 export const metadata: Metadata = {
   title: siteTitle,

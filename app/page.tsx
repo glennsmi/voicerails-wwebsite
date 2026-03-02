@@ -12,15 +12,16 @@ export default function HomePage() {
             Now in Early Access
           </div>
           <h1 className="hero-title animate-fade-up-1">
-            Production voice agents.<br /><em>In minutes.</em>
+            Production voice platforms.<br /><em>In minutes.</em>
           </h1>
           <p className="hero-sub animate-fade-up-2">
-            One API layer for real-time voice models, telephony, and conversation
-            workflows. Stop building infrastructure. Start shipping voice.
+            One platform for real-time orchestration, telephony, workflows, visual
+            flow design, intelligent extraction, and memory. Built for developers
+            and non-technical builders shipping serious voice products.
           </p>
           <div className="hero-actions animate-fade-up-3">
             <Link href="/developers" className="btn-primary">Start Building Free →</Link>
-            <Link href="/docs" className="btn-secondary">Read the Docs</Link>
+            <Link href="/why-voicerails" className="btn-secondary">Why VoiceRails</Link>
           </div>
 
           <div className="code-block animate-fade-up-4" style={{ marginTop: 64 }}>
@@ -55,16 +56,16 @@ export default function HomePage() {
             <div className="metric-label">Zero to first live call</div>
           </div>
           <div className="metric-item">
-            <div className="metric-value">4</div>
-            <div className="metric-label">Voice providers supported</div>
+            <div className="metric-value">2</div>
+            <div className="metric-label">Ways to build (SDK + visual)</div>
           </div>
           <div className="metric-item">
-            <div className="metric-value">99.5%</div>
-            <div className="metric-label">Session start success rate</div>
+            <div className="metric-value">6</div>
+            <div className="metric-label">Core platform modules</div>
           </div>
           <div className="metric-item">
-            <div className="metric-value">&lt;200ms</div>
-            <div className="metric-label">Platform overhead per turn</div>
+            <div className="metric-value">1</div>
+            <div className="metric-label">Platform across app + telephony</div>
           </div>
         </div>
       </div>
@@ -73,10 +74,10 @@ export default function HomePage() {
       <div className="container">
         <section className="section">
           <div className="section-label">Platform</div>
-          <h2 className="section-title section-title-relaxed">Three modules. One unified API.</h2>
+          <h2 className="section-title section-title-relaxed">Core runtime + builder + intelligence.</h2>
           <p className="section-desc">
-            Everything you need to build, deploy, and operate production voice
-            agents — without months of infrastructure work.
+            VoiceRails gives teams one platform to build, deploy, and operate
+            production voice products without stitching six systems together.
           </p>
 
           <div className="modules-grid" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
@@ -122,6 +123,30 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+
+          <div className="grid-3" style={{ marginTop: 16 }}>
+            <div className="card">
+              <h3>Visual Flow Designer</h3>
+              <p>
+                Drag-and-drop canvas for non-technical builders that compiles to
+                the same deterministic workflow JSON engineers deploy.
+              </p>
+            </div>
+            <div className="card">
+              <h3>Intelligent Extraction</h3>
+              <p>
+                Define outcomes to extract from natural conversation and receive
+                structured outputs with confidence scoring.
+              </p>
+            </div>
+            <div className="card">
+              <h3>Memory + Post-Call Analysis</h3>
+              <p>
+                Persist cross-session context, finalize transcripts, and trigger
+                downstream actions with structured conversation intelligence.
+              </p>
+            </div>
+          </div>
         </section>
       </div>
 
@@ -157,13 +182,56 @@ export default function HomePage() {
             <div className="provider-chip">
               <span className="provider-dot" style={{ background: "var(--orange)" }} />
               <span>Grok Voice</span>
-              <span className="status">GA</span>
+              <span className="status">Preview</span>
             </div>
             <div className="provider-chip">
               <span className="provider-dot" style={{ background: "var(--text-muted)" }} />
               <span>Twilio</span>
               <span className="status">Telephony</span>
             </div>
+          </div>
+        </section>
+      </div>
+
+      <div className="container"><hr className="section-divider" /></div>
+
+      {/* WHY VOICERAILS */}
+      <div className="container">
+        <section className="section">
+          <div className="section-label">Why VoiceRails</div>
+          <h2 className="section-title">We built this after living the pain.</h2>
+          <p className="section-desc">
+            Voice infrastructure looks simple from the outside. In production,
+            provider drift, turn-taking edge cases, and telephony complexity can
+            consume entire engineering roadmaps.
+          </p>
+
+          <div className="grid-3">
+            <div className="card">
+              <h3>Skip hidden complexity</h3>
+              <p>
+                We abstract provider-specific behavior so your team can focus on
+                product logic rather than protocol quirks.
+              </p>
+            </div>
+            <div className="card">
+              <h3>Ship with confidence</h3>
+              <p>
+                Build app and phone experiences on one runtime with observability,
+                metering, and operational controls from day one.
+              </p>
+            </div>
+            <div className="card">
+              <h3>Move faster over time</h3>
+              <p>
+                As providers and requirements evolve, you stay on one platform
+                instead of rebuilding your voice stack every quarter.
+              </p>
+            </div>
+          </div>
+
+          <div style={{ marginTop: 24 }}>
+            <Link href="/why-voicerails" className="btn-secondary">Read Our Founder Story</Link>
           </div>
         </section>
       </div>
@@ -318,10 +386,10 @@ export default function HomePage() {
       <div className="container">
         <div className="final-cta">
           <h2>Stop building plumbing.<br />Start shipping voice.</h2>
-          <p>Go from zero to a live production voice agent in under 30 minutes.</p>
+          <p>Go from zero to a production-ready voice platform in under 30 minutes.</p>
           <div className="hero-actions">
             <Link href="/developers" className="btn-primary">Start Building Free →</Link>
-            <Link href="/docs" className="btn-secondary">Read the Docs</Link>
+            <Link href="/why-voicerails" className="btn-secondary">Why VoiceRails</Link>
           </div>
         </div>
       </div>

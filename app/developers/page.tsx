@@ -16,7 +16,7 @@ export default function DevelopersPage() {
           </h1>
           <p className="page-subtitle">
             Concise, runnable documentation centered on production outcomes.
-            Less theory, more delivery.
+            Built from real implementation lessons so your team ships faster.
           </p>
         </div>
       </div>
@@ -27,8 +27,9 @@ export default function DevelopersPage() {
           <div className="section-label">Quickstart</div>
           <h2 className="section-title">First call in under five minutes.</h2>
           <p className="section-desc">
-            Install the CLI, initialise your project, and deploy — then make
-            your first API call.
+            Install the CLI, initialise your project, and deploy. Start with the
+            SDK path, then expand into workflows, telephony, and builder-driven
+            collaboration as you scale.
           </p>
 
           <div className="steps-grid">
@@ -47,6 +48,49 @@ export default function DevelopersPage() {
               <p>Deploy your voice agent and verify all systems are healthy.</p>
               <code>$ voicerails deploy && voicerails verify</code>
             </div>
+          </div>
+        </section>
+      </div>
+
+      <div className="container"><hr className="section-divider" /></div>
+
+      {/* WHY THIS EXISTS */}
+      <div className="container">
+        <section className="section">
+          <div className="section-label">Why This Exists</div>
+          <h2 className="section-title">Built by a team that hit the edge cases first.</h2>
+          <p className="section-desc">
+            We built VoiceRails after wrestling with provider quirks, turn-detection
+            bugs, telephony bridging, and production reliability firsthand. That
+            experience now lives in the platform primitives and docs.
+          </p>
+
+          <div className="grid-3">
+            <div className="card">
+              <h3>Less rework</h3>
+              <p>
+                One runtime contract across providers means fewer rewrites when the
+                ecosystem changes.
+              </p>
+            </div>
+            <div className="card">
+              <h3>Less fragility</h3>
+              <p>
+                Core operational concerns are handled in-platform instead of spread
+                through ad hoc app code.
+              </p>
+            </div>
+            <div className="card">
+              <h3>More shipping</h3>
+              <p>
+                Your engineering time goes to product behavior and business logic,
+                not voice plumbing.
+              </p>
+            </div>
+          </div>
+
+          <div style={{ marginTop: 24 }}>
+            <Link href="/why-voicerails" className="btn-secondary">Read the Founder Story</Link>
           </div>
         </section>
       </div>
@@ -120,10 +164,10 @@ export default function DevelopersPage() {
       <div className="container">
         <div className="final-cta">
           <h2>Ready to ship voice?</h2>
-          <p>Start with the quickstart guide or explore the API reference.</p>
+          <p>Start with quickstart or learn why we built the platform this way.</p>
           <div className="hero-actions">
             <Link href="/docs/getting-started" className="btn-primary">Read Quickstart →</Link>
-            <Link href="/docs/runtime-api" className="btn-secondary">API Reference</Link>
+            <Link href="/why-voicerails" className="btn-secondary">Why VoiceRails</Link>
           </div>
         </div>
       </div>

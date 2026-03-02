@@ -26,7 +26,7 @@ export default function SiteHeader() {
             height={28}
             className="brand-logo"
           />
-          voice<span className="brand-accent">rails</span>.ai
+          voice<span className="brand-accent">rails</span>
         </Link>
 
         <nav className="site-nav" aria-label="Primary">

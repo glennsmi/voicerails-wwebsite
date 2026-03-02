@@ -14,7 +14,7 @@ export default function SiteFooter() {
               height={24}
               className="footer-logo"
             />
-            voice<span>rails</span>.ai
+            voice<span>rails</span>
           </p>
           <p className="footer-tagline">
             The infrastructure layer for production voice AI. Built for developers and builders who ship.

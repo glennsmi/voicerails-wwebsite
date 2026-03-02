@@ -1,5 +1,5 @@
 {
-  "name": "VoiceRails.ai",
+  "name": "VoiceRails",
   "short_name": "VoiceRails",
   "description": "One API layer for real-time voice models, telephony, and conversation workflows.",
   "start_url": "/",

@@ -23,7 +23,7 @@ const mono = JetBrains_Mono({
   variable: "--font-mono"
 });
 
-const siteTitle = "VoiceRails.ai — Rails for Voice AI";
+const siteTitle = "VoiceRails — Rails for Voice AI";
 const siteDescription =
   "One platform for real-time orchestration, telephony, workflows, visual flow design, extraction, and memory. Built for teams shipping production voice.";
 
@@ -47,10 +47,10 @@ export const metadata: Metadata = {
     title: siteTitle,
     description: siteDescription,
     url: "https://voicerails.ai",
-    siteName: "VoiceRails.ai",
+    siteName: "VoiceRails",
     images: [
       {
-        url: "/og-image.png",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
         alt: "VoiceRails — Rails for Voice AI",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteTitle,
     description: siteDescription,
-    images: ["/twitter-image.png"],
+    images: ["/twitter-image"],
   },
   appleWebApp: {
     capable: true,

@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/why-voicerails`, changeFrequency: "weekly", priority: 0.91 },
     { url: `${baseUrl}/developers`, changeFrequency: "weekly", priority: 0.92 },
     { url: `${baseUrl}/pricing`, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${baseUrl}/brand`, changeFrequency: "monthly", priority: 0.82 },
     { url: `${baseUrl}/docs`, changeFrequency: "weekly", priority: 0.9 },
     { url: `${baseUrl}/docs/getting-started`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/docs/runtime-api`, changeFrequency: "monthly", priority: 0.8 },

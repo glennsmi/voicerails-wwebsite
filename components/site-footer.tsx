@@ -10,8 +10,8 @@ export default function SiteFooter() {
             <Image
               src="/logo-64.png"
               alt=""
-              width={24}
-              height={24}
+              width={38}
+              height={38}
               className="footer-logo"
             />
             voice<span>rails</span>
@@ -46,6 +46,7 @@ export default function SiteFooter() {
             <li><a href="mailto:founders@voicerails.ai">Contact</a></li>
             <li><a href="#">Status</a></li>
             <li><a href="#">Twitter</a></li>
+            <li><Link href="/brand">Brand Design Reference</Link></li>
           </ul>
         </div>
       </div>

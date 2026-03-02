@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
 import "./globals.css";
@@ -77,8 +78,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${body.variable} ${display.variable} ${mono.variable}`}>
+        <Script id="vr-theme-init" strategy="beforeInteractive">
+          {`(() => {
+            try {
+              const stored = localStorage.getItem("vr-theme");
+              const theme = stored === "light" ? "light" : "dark";
+              document.documentElement.setAttribute("data-theme", theme);
+            } catch {
+              document.documentElement.setAttribute("data-theme", "dark");
+            }
+          })();`}
+        </Script>
         <SiteHeader />
         <div className="page-wrap">{children}</div>
         <SiteFooter />

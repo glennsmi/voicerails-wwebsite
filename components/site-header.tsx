@@ -43,7 +43,7 @@ export default function SiteHeader() {
           aria-label="VoiceRails home"
         >
           <Image
-            src="/logo-64.png"
+            src="/icon.png"
             alt=""
             width={isHome ? 44 : 38}
             height={isHome ? 44 : 38}

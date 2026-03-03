@@ -34,7 +34,7 @@ const logoAssets = [
   {
     titleLine1: "UI compact icon",
     titleLine2: null,
-    src: "/logo-64.png",
+    src: "/icon.png",
     note: "Use in navigation, utility bars, and compact UI moments.",
     frame: "brand-logo-frame-dark"
   }

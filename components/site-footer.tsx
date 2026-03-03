@@ -8,7 +8,7 @@ export default function SiteFooter() {
         <div>
           <p className="footer-brand">
             <Image
-              src="/logo-64.png"
+              src="/icon.png"
               alt=""
               width={38}
               height={38}

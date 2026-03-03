@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   title: siteTitle,
   description: siteDescription,
   metadataBase: new URL("https://voicerails.ai"),
-  manifest: "/site.webmanifest",
+  manifest: "/manifest.webmanifest",
   icons: {
     icon: [
       { url: "/icon-192x192.png", sizes: "192x192", type: "image/png" },

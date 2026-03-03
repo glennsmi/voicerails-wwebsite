@@ -27,11 +27,16 @@ const mono = JetBrains_Mono({
 const siteTitle = "VoiceRails — Rails for Voice AI";
 const siteDescription =
   "One platform for real-time orchestration, telephony, workflows, visual flow design, extraction, and memory. Built for teams shipping production voice.";
+const defaultSiteUrl = "https://voicerails-website--voicerails8.us-central1.hosted.app";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL?.trim().startsWith("http")
+    ? process.env.NEXT_PUBLIC_SITE_URL.trim()
+    : defaultSiteUrl;
 
 export const metadata: Metadata = {
   title: siteTitle,
   description: siteDescription,
-  metadataBase: new URL("https://voicerails.ai"),
+  metadataBase: new URL(siteUrl),
   manifest: "/manifest.webmanifest",
   icons: {
     icon: [
@@ -45,7 +50,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: siteTitle,
     description: siteDescription,
-    url: "https://voicerails.ai",
+    url: siteUrl,
     siteName: "VoiceRails",
     images: [
       {

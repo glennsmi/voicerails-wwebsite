@@ -49,7 +49,7 @@ export default function SiteHeader() {
             height={isHome ? 44 : 38}
             className="brand-logo"
           />
-          voice<span className="brand-accent">rails</span>
+          <span>Voice<span className="brand-accent">Rails</span></span>
         </Link>
 
         <div className="nav-actions">

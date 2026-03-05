@@ -18,25 +18,36 @@ const brandPillars = [
 
 const logoAssets = [
   {
+    titleLine1: "Horizontal lockup",
+    titleLine2: "logo + wordmark",
+    src: "/Logo%20+%20Wordmark%20845x256.png",
+    note: "Primary lockup for headers, social cards, and anywhere horizontal space is available. \"Voice\" renders white; \"Rails\" renders in brand teal.",
+    frame: "brand-logo-frame-dark",
+    wide: true
+  },
+  {
     titleLine1: "Primary symbol",
     titleLine2: "on dark",
     src: "/VoiceRails%201000x1000.png",
     note: "Use for dark-background placements, social cards, and splash surfaces.",
-    frame: "brand-logo-frame-dark"
+    frame: "brand-logo-frame-dark",
+    wide: false
   },
   {
     titleLine1: "Transparent symbol",
     titleLine2: null,
     src: "/VoiceRails%201000x1000%20no%20background.png",
     note: "Use where background color is controlled by the host product.",
-    frame: "brand-logo-frame-light"
+    frame: "brand-logo-frame-light",
+    wide: false
   },
   {
     titleLine1: "UI compact icon",
     titleLine2: null,
     src: "/icon.png",
     note: "Use in navigation, utility bars, and compact UI moments.",
-    frame: "brand-logo-frame-dark"
+    frame: "brand-logo-frame-dark",
+    wide: false
   }
 ];
 
@@ -91,7 +102,12 @@ x = total symbol height
 - Preferred nav symbol size: 28px to 36px
 - Minimum horizontal lockup width: 120px
 - Keep symbol orientation horizontal; never rotate, skew, or crop
-- Keep gradients intact; do not recolor the mark outside approved tokens`;
+- Keep gradients intact; do not recolor the mark outside approved tokens
+
+Wordmark color treatment
+- "Voice" → white (#FFFFFF or --text-primary on dark)
+- "Rails" → brand teal (#22D3A7 / --accent)
+- This two-tone split is the canonical wordmark; never render both words the same color`;
 
 export default function BrandReferencePage() {
   return (
@@ -140,11 +156,43 @@ export default function BrandReferencePage() {
             background rules to keep visual consistency across products, docs, and marketing surfaces.
           </p>
 
+          {/* Wide horizontal lockup — full width showcase */}
+          {logoAssets.filter(a => a.wide).map((asset) => (
+            <div className="card" key={asset.titleLine1} style={{ marginBottom: 24 }}>
+              <h3>
+                {asset.titleLine1}
+                {asset.titleLine2 && <> · {asset.titleLine2}</>}
+              </h3>
+              <div className={`brand-logo-frame ${asset.frame}`} style={{ width: "100%", height: 140, borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", marginTop: 16, marginBottom: 12 }}>
+                <Image src={asset.src} alt={asset.titleLine1} width={520} height={158} style={{ objectFit: "contain", maxWidth: "90%" }} />
+              </div>
+              <p className="brand-type-caption">{asset.note}</p>
+
+              {/* Wordmark color treatment callout */}
+              <div style={{ display: "flex", gap: 24, marginTop: 20, flexWrap: "wrap" as const }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{ width: 32, height: 32, borderRadius: 6, background: "#FFFFFF", border: "1px solid #1E2028" }} />
+                  <div>
+                    <p className="brand-token-name" style={{ marginBottom: 2 }}>&ldquo;Voice&rdquo;</p>
+                    <p className="brand-type-caption">#FFFFFF · --text-primary on dark</p>
+                  </div>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{ width: 32, height: 32, borderRadius: 6, background: "#22D3A7" }} />
+                  <div>
+                    <p className="brand-token-name" style={{ marginBottom: 2 }}>&ldquo;Rails&rdquo;</p>
+                    <p className="brand-type-caption">#22D3A7 · --accent</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+
           <div className="grid-2">
             <div className="card">
-              <h3>Approved assets</h3>
+              <h3>Symbol and icon assets</h3>
               <div className="brand-logo-grid">
-                {logoAssets.map((asset) => (
+                {logoAssets.filter(a => !a.wide).map((asset) => (
                   <div className="brand-logo-item" key={asset.titleLine1}>
                     <div className={`brand-logo-frame ${asset.frame}`}>
                       <Image src={asset.src} alt={asset.titleLine1} width={112} height={112} className="brand-logo-preview" />
@@ -162,7 +210,8 @@ export default function BrandReferencePage() {
               <h3>Usage rules</h3>
               <ul>
                 <li>Maintain clear space of at least 0.5x around the mark in all contexts.</li>
-                <li>Use the dark-background asset on dark surfaces and transparent asset on controlled surfaces.</li>
+                <li>Use the horizontal lockup wherever horizontal space permits — it is the primary brand expression.</li>
+                <li>Use the dark-background symbol on dark surfaces and transparent symbol on controlled surfaces.</li>
                 <li>Keep logo rendering crisp; export SVG or high-density PNG for production delivery.</li>
                 <li>Do not apply shadows, strokes, alternate gradients, or unapproved color tints.</li>
                 <li>Do not place logo over noisy/low-contrast imagery without an isolating background.</li>

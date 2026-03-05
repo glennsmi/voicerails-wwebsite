@@ -38,6 +38,18 @@ VoiceRails is the infrastructure layer for production voice AI: technically deep
 - Product text treatment in UI: `voice` + accent `rails`
 - Sentence usage: "VoiceRails" (capitalized)
 
+### Wordmark color treatment (canonical)
+The wordmark is always rendered as a two-tone lockup. Never render both words in the same color.
+
+| Word | Color | Token |
+|---|---|---|
+| **Voice** | White | `#FFFFFF` / `--text-primary` on dark backgrounds |
+| **Rails** | Brand teal | `#22D3A7` / `--accent` |
+
+- On dark surfaces (default): "Voice" is white (#FFFFFF), "Rails" is teal (#22D3A7).
+- On light surfaces: "Voice" is near-black (#0F172A / `--text-primary`), "Rails" is dark teal (#0F9F7A / `--accent` light).
+- Never swap the colors, apply both in the same color, or render "Rails" in any color outside the approved accent token.
+
 ### Logo usage intent
 - Mark should read as technical signal + structured rails
 - Prioritize clarity at small sizes (favicon, nav icon, CLI contexts)
@@ -57,11 +69,15 @@ VoiceRails is the infrastructure layer for production voice AI: technically deep
 
 ### Approved logo assets
 
-| Asset | Filename | Typical usage |
-|---|---|---|
-| Primary symbol (dark field) | `VoiceRails 1000x1000.png` | Social previews, presentations, dark backgrounds |
-| Transparent symbol | `VoiceRails 1000x1000 no background.png` | Product UIs and partner contexts with controlled backgrounds |
-| Compact UI icon | `logo-64.png` | Navigation bars, utility controls, compact UI placements |
+| Asset | Filename | Dimensions | Typical usage |
+|---|---|---|---|
+| **Horizontal lockup** (logo + wordmark) | `Logo + Wordmark 845x256.png` | 845×256 | Headers, social/OG images, marketing materials, anywhere horizontal space is available. **Primary lockup.** |
+| Primary symbol (dark field) | `VoiceRails 1000x1000.png` | 1000×1000 | Social previews, presentations, dark backgrounds |
+| Transparent symbol | `VoiceRails 1000x1000 no background.png` | 1000×1000 | Product UIs and partner contexts with controlled backgrounds |
+| Compact UI icon | `logo-64.png` | 64×64 | Navigation bars, utility controls, compact UI placements |
+
+### Social / Open Graph image usage
+The horizontal lockup (`Logo + Wordmark 845x256.png`) is the preferred asset for Open Graph and Twitter/X social card images. It is rendered at the top of the 1200×630 social card at approximately 380×115px, preserving the full wordmark with teal "Rails" treatment visible at social card scale.
 
 ### Clear-space and minimum-size matrix
 
